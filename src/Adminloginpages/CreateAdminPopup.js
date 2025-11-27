@@ -26,7 +26,7 @@ function CreateAdminPopup({ closePopup }) {
 
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/Adminaprovel/register",
+        "https://besravan11111.onrender.com/api/Adminaprovel/register",
         { adminname, email, password }
       );
 

@@ -24,7 +24,7 @@ function LoginEdit() {
     if (!number) return;
 
     axios
-      .get(`http://localhost:8080/api/users/getbynumber/${number}`)
+      .get(`https://besravan11111.onrender.com/api/users/getbynumber/${number}`)
       .then((res) => {
         console.log("API Response:", res.data);
         setUser(res.data.data); // ✅ IMPORTANT FIX
@@ -40,7 +40,7 @@ function LoginEdit() {
     if (!window.confirm("Are you sure?")) return;
 
     axios
-      .delete(`http://localhost:8080/api/users/delete/${number}`)
+      .delete(`https://besravan11111.onrender.com/api/users/delete/${number}`)
       .then(() => {
         alert("User deleted successfully!");
         navigate("/");

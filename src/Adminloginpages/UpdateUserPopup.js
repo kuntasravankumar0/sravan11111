@@ -9,7 +9,7 @@ function UpdateUserPopup({ user, closePopup, refresh }) {
   const updateUser = async () => {
     try {
       await axios.put(
-        `http://localhost:8080/api/Adminaprovel/update/${user.customerId}`,
+        `https://besravan11111.onrender.com/api/Adminaprovel/update/${user.customerId}`,
         { adminname, email, password }
       );
 

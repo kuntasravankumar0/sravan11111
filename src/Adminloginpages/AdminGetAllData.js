@@ -6,12 +6,12 @@ function AdminGetAllData() {
   const [allUsers, setAllUsers] = useState([]);
 
   const loadPending = async () => {
-    const res = await axios.get("http://localhost:8080/api/Adminaprovel/pending");
+    const res = await axios.get("https://besravan11111.onrender.com/api/Adminaprovel/pending");
     setPending(res.data);
   };
 
   const loadAll = async () => {
-    const res = await axios.get("http://localhost:8080/api/Adminaprovel/all");
+    const res = await axios.get("https://besravan11111.onrender.com/api/Adminaprovel/all");
     setAllUsers(res.data);
   };
 

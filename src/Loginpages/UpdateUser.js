@@ -20,7 +20,7 @@ function UpdateUser() {
   // 1️⃣ Load user data on page open
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/users/getbynumber/${number}`)
+      .get(`https://besravan11111.onrender.com/api/users/getbynumber/${number}`)
       .then((res) => {
         const data = res.data.data;
         setForm({
@@ -43,12 +43,12 @@ function UpdateUser() {
     e.preventDefault();
 
     axios
-      .put(`http://localhost:8080/api/users/update/${number}`, form)
+      .put(`https://besravan11111.onrender.com/api/users/update/${number}`, form)
       .then((res) => {
         setMessage("User updated successfully! ✔");
 
         setTimeout(() => {
-          navigate("/home3", {
+          navigate("/LoginEdit", {
             state: {
               email: form.useremail,
               number: form.number

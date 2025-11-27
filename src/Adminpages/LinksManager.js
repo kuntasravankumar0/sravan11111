@@ -15,7 +15,7 @@ function LinksManager() {
 
   const loadAll = () => {
     axios
-      .get("http://localhost:8080/api/links/all")
+      .get("https://besravan11111.onrender.com/api/links/all")
       .then((res) => setLinks(res.data))
       .catch((err) => console.error(err));
   };
@@ -30,7 +30,7 @@ function LinksManager() {
 
   const addLink = () => {
     axios
-      .post("http://localhost:8080/api/links/create", form)
+      .post("https://besravan11111.onrender.com/api/links/create", form)
       .then(() => {
         alert("Link Added!");
         loadAll();
@@ -43,7 +43,7 @@ function LinksManager() {
     if (!editNumber) return alert("Enter Link Number to Update");
 
     axios
-      .put(`http://localhost:8080/api/links/update/${editNumber}`, form)
+      .put(`https://besravan11111.onrender.com/api/links/update/${editNumber}`, form)
       .then(() => {
         alert("Updated Successfully!");
         loadAll();
@@ -56,7 +56,7 @@ function LinksManager() {
     if (!deleteNumber) return alert("Enter Link Number to Delete");
 
     axios
-      .delete(`http://localhost:8080/api/links/delete/${deleteNumber}`)
+      .delete(`https://besravan11111.onrender.com/api/links/delete/${deleteNumber}`)
       .then(() => {
         alert("Deleted Successfully!");
         loadAll();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080/api/users";
+const BASE_URL = "https://besravan11111.onrender.com/api/users";
 
 export default function UserTable() {
   const [users, setUsers] = useState([]);

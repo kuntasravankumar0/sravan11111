@@ -8,7 +8,7 @@ function GetAllByCategory() {
 
   // Load all data on page load
   useEffect(() => {
-    axios.get("http://localhost:8080/api/links/all")
+    axios.get("https://besravan11111.onrender.com/api/links/all")
       .then(response => {
         setAllData(response.data);
         setFilteredData(response.data); // show all initially

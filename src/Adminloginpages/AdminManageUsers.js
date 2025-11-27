@@ -8,7 +8,7 @@ function AdminManageUsers() {
 
   // Load all users
   const loadUsers = async () => {
-    const res = await axios.get("http://localhost:8080/api/Adminaprovel/all");
+    const res = await axios.get("https://besravan11111.onrender.com/api/Adminaprovel/all");
     setUsers(res.data);
   };
 
@@ -21,7 +21,7 @@ function AdminManageUsers() {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
 
     await axios.delete(
-      `http://localhost:8080/api/Adminaprovel/delete/${customerId}`
+      `https://besravan11111.onrender.com/api/Adminaprovel/delete/${customerId}`
     );
     alert("User deleted!");
     loadUsers();
@@ -30,7 +30,7 @@ function AdminManageUsers() {
   // Approve user
   const approveUser = async (id) => {
     await axios.put(
-      `http://localhost:8080/api/Adminaprovel/approve/${id}`
+      `https://besravan11111.onrender.com/api/Adminaprovel/approve/${id}`
     );
     alert("User Approved!");
     loadUsers();
@@ -39,7 +39,7 @@ function AdminManageUsers() {
   // Reject user
   const rejectUser = async (id) => {
     await axios.put(
-      `http://localhost:8080/api/Adminaprovel/reject/${id}`
+      `https://besravan11111.onrender.com/api/Adminaprovel/reject/${id}`
     );
     alert("User Rejected!");
     loadUsers();
