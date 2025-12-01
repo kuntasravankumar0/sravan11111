@@ -1,0 +1,92 @@
+/* Overlay background */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  padding: 20px;
+}
+
+/* Popup box */
+.popup-box {
+  width: 90%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  animation: popupScale 0.25s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Title + subtitle */
+.popup-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.popup-subtitle {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  color: #444;
+  font-size: 15px;
+}
+
+/* Content container (Login form) */
+.popup-content {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+/* Close button */
+.popup-close-btn {
+  margin-top: 15px;
+  padding: 12px;
+  width: 100%;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.popup-close-btn:hover {
+  opacity: 0.9;
+}
+
+/* Animation */
+@keyframes popupScale {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .popup-box {
+    padding: 15px;
+  }
+
+  .popup-close-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .popup-title {
+    font-size: 18px;
+  }
+}
