@@ -1,0 +1,66 @@
+.update-container {
+  max-width: 420px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.update-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.update-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.update-form button {
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: green;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.update-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.msg {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: green;
+}
+
+/* Mobile Auto Adjustments */
+@media (max-width: 480px) {
+  .update-container {
+    padding: 15px;
+    margin-top: 25px;
+  }
+
+  .update-form input {
+    padding: 10px;
+  }
+
+  .update-form button {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,335 @@
+/* =====================================================
+   GLOBAL BASE STYLES (Safe, conflict-free)
+===================================================== */
+.all-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #111;
+}
+
+/* =====================================================
+   EMPLOYEE MANAGEMENT SYSTEM
+===================================================== */
+.employeeboxcontainer {
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.employeetopfeatures {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.employeetopfeatures h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.employeetopfeatures p {
+  font-size: 1.1rem;
+}
+
+/* GitHub Button */
+.btn-outline-dark {
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid #111;
+  transition: 0.3s ease;
+  color: #111;
+  font-size: 1rem;
+}
+
+.btn-outline-dark:hover {
+  background: #007bff;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Blocks */
+.employeesystemblock {
+  background: #f9fafc;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  transition: 0.3s ease;
+}
+
+.employeesystemblock:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.employeesystemblock h2 {
+  border-left: 5px solid #007bff;
+  padding-left: 10px;
+  margin-bottom: 15px;
+}
+
+/* Info Items */
+.employeeinfoskyblue {
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.employeeinfoskyblue strong {
+  color: #007bff;
+}
+
+.employeeinfoskyblue:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* =====================================================
+   PROPERTY INSURANCE SECTION
+===================================================== */
+.pi-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 35px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.pi-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.pi-box {
+  background: #f9fafc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: 0.3s ease;
+}
+
+.pi-box:hover {
+  transform: translateY(-3px);
+}
+
+.pi-info {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.pi-info strong {
+  color: #007bff;
+}
+
+/* =====================================================
+   SKILLSDATA SECTION
+===================================================== */
+.skills-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+}
+
+.skills-title {
+  text-align: center;
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.skill-item {
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.skill-item:hover {
+  background: #eef7ff;
+  transform: translateX(5px);
+  color: #007bff;
+}
+
+/* =====================================================
+   VOTING SYSTEM DESCRIPTION
+===================================================== */
+.voting-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 35px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+}
+
+.voting-title {
+  font-size: 2.3rem;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.voting-section {
+  background: #f9fafc;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  transition: 0.3s ease;
+}
+
+.voting-section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+.voting-section strong {
+  color: #007bff;
+}
+
+/* =====================================================
+   RESPONSIVE (MOBILE)
+===================================================== */
+@media (max-width: 768px) {
+  .employeeboxcontainer,
+  .pi-container,
+  .skills-container,
+  .voting-container {
+    padding: 20px;
+  }
+
+  .employeetopfeatures h1,
+  .pi-title,
+  .skills-title,
+  .voting-title {
+    font-size: 1.9rem;
+  }
+
+  .employeeinfoskyblue,
+  .pi-info,
+  .skill-item,
+  .voting-section {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+/* ===== MAIN CONTAINER ===== */
+.employeeboxcontainer {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== HEADER ===== */
+.employeetopfeatures {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.employeetopfeatures h1 {
+  margin-bottom: 5px;
+}
+
+.employeetopfeatures p {
+  color: #555;
+}
+
+/* ===== TABS ===== */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.tab {
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: #e0e0e0;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  background: #cfd8dc;
+}
+
+.tab.active {
+  background: #1976d2;
+  color: #ffffff;
+}
+
+/* ===== CONTENT BLOCK ===== */
+.employeesystemblock {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+/* ===== LIST / TEXT ===== */
+.employeeinfoskyblue {
+  color: #0277bd;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+/* ===== BUTTON ===== */
+.btn-outline-dark {
+  margin-top: 12px;
+  padding: 8px 14px;
+  border: 1px solid #333;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn-outline-dark:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* ===== SHOW MORE BOX ===== */
+.more-box {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f1f8ff;
+  border-radius: 6px;
+}
+
+/* ===== FOOTER ===== */
+.footer-center {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
