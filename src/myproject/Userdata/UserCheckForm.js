@@ -45,7 +45,7 @@ function UserCheckForm() {
     }
 
     setIsLoading(true);
-    setMessage("Checking user status...");
+    setMessage("Checking user status... This may take 1 minute. ");
 
     try {
       const response = await axios.get(`${USERS_API}/check`, {
