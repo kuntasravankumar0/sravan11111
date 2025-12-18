@@ -150,7 +150,7 @@ function UserCheckForm() {
         </button>
       
       </form> 
-
+    <hr />
 
        <center> {/* ✅ GOOGLE SIGN IN */}
       <GoogleLogin
@@ -158,7 +158,7 @@ function UserCheckForm() {
         onError={() => setMessage("❌ Google Login Failed")}
       /></center>
 
-      <hr />
+  
 
       {message && <p className="msg">{message}</p>}
 
