@@ -25,7 +25,7 @@
   font-size: clamp(20px, 4vw, 30px);
   font-weight: 700;
   color: #ffffff;
-  text-shadow: 0 0 10px rgba(255,255,255,0.7);
+  text-shadow: 0 0 10px rgba(227, 220, 240, 0.7);
   transition: 0.3s ease;
 }
 
@@ -43,8 +43,8 @@
 }
 
 .header-user-avatar {
-  width: 42px;
-  height: 42px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -149,5 +149,181 @@
   .nav-link-button {
     height: 34px;
     font-size: 14px;
+  }
+}
+/* ================================
+   POPUP OVERLAY (FIXED)
+================================ */
+.popup-overlay-display-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;              /* 🔑 ABOVE EVERYTHING */
+  padding: 20px;              /* 🔑 prevents edge cut on mobile */
+}
+
+/* ================================
+   POPUP BOX (FIXED)
+================================ */
+.popup-content-wrapper-container {
+  width: 100%;
+  max-width: 600px;
+  max-height: 85vh;            /* 🔑 prevents overflow */
+  overflow-y: auto;            /* 🔑 scroll inside popup */
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+  backdrop-filter: blur(18px);
+  position: relative;
+  animation: popupFade 0.25s ease;
+}
+
+/* ================================
+   POPUP ANIMATION
+================================ */
+@keyframes popupFade {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ================================
+   CLOSE BUTTON (FIXED)
+================================ */
+.popup-close-button-unique {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  color: #ffffff;
+  transition: 0.2s ease;
+  z-index: 10000;             /* 🔑 always clickable */
+}
+
+.popup-close-button-unique:hover {
+  color: #ff3b3b;
+  transform: scale(1.15);
+}
+/* ================================
+   PROJECTS GRID — FIXED
+================================ */
+.projects-grid-display-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+  place-items: center;
+}
+
+/* ================================
+   PROJECT CARD — FIXED
+================================ */
+.project-card-display-container {
+  width: 70%;
+  max-width: 150px;
+  background: rgba(58, 12, 186, 0.18);
+  border-radius: 18px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.project-card-display-container:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.35);
+}
+
+/* ================================
+   PROJECT INFO ROW
+================================ */
+.project-info-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ================================
+   PROJECT IMAGE — FIXED
+================================ */
+.project-image-style-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+/* ================================
+   PROJECT TITLE
+================================ */
+.project-title-header-style {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* ================================
+   PROJECT DESCRIPTION
+================================ */
+.project-description-text-style {
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+/* ================================
+   PROJECT BUTTON
+================================ */
+.project-button-link-style {
+  margin-top: 14px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: #ffe600;
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.project-button-link-style:hover {
+  background: #fff700;
+  transform: scale(1.06);
+}
+
+/* ================================
+   MOBILE FIX
+================================ */
+@media (max-width: 480px) {
+  .projects-grid-display-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-card-display-container {
+    max-width: none;
+  }
+
+  .project-title-header-style {
+    font-size: 16px;
+  }
+
+  .project-description-text-style {
+    font-size: 13px;
   }
 }
