@@ -152,11 +152,11 @@ function UserCheckForm() {
       </form> 
 
 
-        {/* ✅ GOOGLE SIGN IN */}
+       <center> {/* ✅ GOOGLE SIGN IN */}
       <GoogleLogin
         onSuccess={handleGoogleSuccess}
         onError={() => setMessage("❌ Google Login Failed")}
-      />
+      /></center>
 
       <hr />
 
