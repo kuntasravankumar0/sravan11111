@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 import UserCreatePopup from "./UserCreatePopup";
 import "./UserCheckForm.css";
 import API_BASE_URL from "../config/apiConfig";
 
-
-
-
-
-// ✅ endpoint defined ONCE (outside component)
+// ✅ endpoint defined ONCE
 const USERS_API = `${API_BASE_URL}/api/users`;
 
 function UserCheckForm() {
@@ -24,16 +22,41 @@ function UserCheckForm() {
   const validateEmail = (value) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
+  // ---------------- GOOGLE LOGIN (ADDED ONLY) ----------------
+  const handleGoogleSuccess = (credentialResponse) => {
+    try {
+      const decoded = jwtDecode(credentialResponse.credential);
+
+      // ✅ ALL POSSIBLE GOOGLE PROFILE DATA
+      const googleUser = {
+        googleId: decoded.sub,
+        name: decoded.name,
+        email: decoded.email,
+        emailVerified: decoded.email_verified,
+        picture: decoded.picture,
+        locale: decoded.locale || "",
+        authProvider: "GOOGLE",
+      };
+
+      // auto-fill email for UX
+      setEmail(googleUser.email);
+
+      // navigate with Google info
+      navigate("/LoginEdit", { state: googleUser });
+    } catch (err) {
+      console.error(err);
+      setMessage("❌ Google Login Failed");
+    }
+  };
+
+  // ---------------- EXISTING CODE (UNCHANGED) ----------------
   const handleCheck = async (e) => {
     e.preventDefault();
-
-    // 🚫 prevent double submit
     if (isLoading) return;
 
     const cleanEmail = email.trim();
     const cleanMobile = mobileNumber.trim();
 
-    // ---------- validation ----------
     if (!validateEmail(cleanEmail)) {
       setMessage("⚠ Enter a valid email address");
       return;
@@ -45,21 +68,16 @@ function UserCheckForm() {
     }
 
     setIsLoading(true);
-    setMessage("Checking user status... This may take 1 minute. ");
+    setMessage("Checking user status... This may take 1 minute.");
 
     try {
       const response = await axios.get(`${USERS_API}/check`, {
-        params: {
-          email: cleanEmail,
-          number: cleanMobile,
-        },
+        params: { email: cleanEmail, number: cleanMobile },
       });
 
       const { type } = response.data || {};
 
-      // ---------- logic ----------
       if (type === "both") {
-        setShowPopup(false);
         navigate("/LoginEdit", {
           state: { email: cleanEmail, number: cleanMobile },
         });
@@ -84,7 +102,6 @@ function UserCheckForm() {
 
       setMessage("❌ Unexpected server response.");
     } catch (error) {
-      console.error("CHECK ERROR:", error?.message);
       setMessage("❌ Server error. Try again.");
     } finally {
       setIsLoading(false);
@@ -95,6 +112,9 @@ function UserCheckForm() {
     <div className="check-container">
       <h2>User Login</h2>
 
+    
+
+      {/* EXISTING FORM — UNCHANGED */}
       <form onSubmit={handleCheck} className="check-form">
         <div className="input-group">
           <label>Email:</label>
@@ -128,21 +148,19 @@ function UserCheckForm() {
         <button type="submit" disabled={isLoading}>
           {isLoading ? "Checking..." : "Login"}
         </button>
-      </form>
+      
+      </form> 
 
-      {message && (
-        <p
-          className={`msg ${
-            message.startsWith("❌")
-              ? "error"
-              : message.startsWith("⚠")
-              ? "warn"
-              : "success"
-          }`}
-        >
-          {message}
-        </p>
-      )}
+
+        {/* ✅ GOOGLE SIGN IN */}
+      <GoogleLogin
+        onSuccess={handleGoogleSuccess}
+        onError={() => setMessage("❌ Google Login Failed")}
+      />
+
+      <hr />
+
+      {message && <p className="msg">{message}</p>}
 
       <button
         onClick={() => setShowPopup(true)}

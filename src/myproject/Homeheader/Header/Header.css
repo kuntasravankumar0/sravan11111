@@ -13,11 +13,12 @@
   gap: 14px;
   position: sticky;
   top: 0;
-  z-index: 100; /* BELOW POPUP */
+  z-index: 100;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* LEFT SECTION */
 .site-owner-name-display-section {
   font-size: clamp(20px, 4vw, 30px);
   font-weight: 700;
@@ -30,24 +31,66 @@
   transform: scale(1.05);
 }
 
-/* NAVIGATION */
+/* ================================
+   HEADER USER (LOGO + NAME + EMAIL)
+================================ */
+.header-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-user-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 40px;       /* LOGO STYLE */
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.header-user-info > div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.header-user-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #3c00ff;
+}
+
+.header-user-email {
+  font-size: 11px;
+  opacity: 0.7;
+  color: #7c76e7;
+}
+
+/* ================================
+   NAVIGATION
+================================ */
 .navigation-menu-items-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: clamp(12px, 3vw, 26px);
 }
 
-.navigation-menu-items-wrapper a {
+.navigation-menu-items-wrapper a,
+.nav-link-button {
   font-size: clamp(15px, 2.5vw, 19px);
   text-decoration: none;
   color: #ffffff;
   padding-bottom: 4px;
   position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
   transition: 0.3s ease;
 }
 
 /* underline animation */
-.navigation-menu-items-wrapper a::after {
+.navigation-menu-items-wrapper a::after,
+.nav-link-button::after {
   content: "";
   position: absolute;
   left: 0;
@@ -58,18 +101,19 @@
   transition: width 0.3s ease;
 }
 
-.navigation-menu-items-wrapper a:hover::after {
+.navigation-menu-items-wrapper a:hover::after,
+.nav-link-button:hover::after {
   width: 100%;
 }
 
-.navigation-menu-items-wrapper a:hover {
+.navigation-menu-items-wrapper a:hover,
+.nav-link-button:hover {
   color: #ffe600;
   transform: scale(1.08);
 }
 
-
 /* ================================
-   POPUP OVERLAY (ON TOP OF HEADER)
+   POPUP OVERLAY
 ================================ */
 .popup-overlay-display-container {
   position: fixed;
@@ -79,7 +123,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 200 !important; /* FIXED — ABOVE HEADER */
+  z-index: 200 !important;
 }
 
 /* POPUP BOX */
@@ -95,12 +139,12 @@
   position: relative;
   margin-top: 40px;
   animation: popupFade 0.3s ease;
-  z-index: 210 !important; /* FIXED */
+  z-index: 210 !important;
 }
 
 @keyframes popupFade {
   from { transform: scale(0.95); opacity: 0; }
-  to   { transform: scale(1);    opacity: 1; }
+  to   { transform: scale(1); opacity: 1; }
 }
 
 /* Close button */
@@ -119,22 +163,19 @@
   transform: scale(1.2);
 }
 
-
 /* ================================
    PROJECTS GRID
-================================ *//* ================================
-   PROJECTS GRID — CENTERED & RESPONSIVE
 ================================ */
 .projects-grid-display-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: clamp(14px, 2vw, 24px);
   width: 100%;
-  place-items: center; /* Center cards */
+  place-items: center;
 }
 
 /* ================================
-   PROJECT CARD — PREMIUM CENTER DESIGN
+   PROJECT CARD
 ================================ */
 .project-card-display-container {
   padding: clamp(10px, 3vw, 5px);
@@ -145,23 +186,19 @@
   transition: 0.35s ease;
   cursor: pointer;
   display: flex;
-  flex-direction: column; /* Stacked layout */
-  align-items: center;    /* CENTER ALL CONTENT */
-  text-align: center;     /* CENTER TEXT */
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   width: 80%;
-  max-width: 150px;       /* Perfect card width */
+  max-width: 150px;
 }
 
-/* Hover effect */
 .project-card-display-container:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 10px 28px rgba(0,0,0,0.35);
 }
 
-
-/* ================================
-   PROJECT IMAGE — CENTER & CLEAN
-================================ */
+/* PROJECT IMAGE */
 .project-image-style-wrapper {
   width: clamp(70px, 10vw, 90px);
   height: clamp(70px, 10vw, 90px);
@@ -170,10 +207,7 @@
   margin-bottom: 12px;
 }
 
-
-/* ================================
-   PROJECT TITLE & DESCRIPTION
-================================ */
+/* TITLE & DESCRIPTION */
 .project-title-header-style {
   font-size: clamp(16px, 3vw, 22px);
   font-weight: 700;
@@ -187,10 +221,7 @@
   margin-bottom: 12px;
 }
 
-
-/* ================================
-   PROJECT BUTTON — CENTERED
-================================ */
+/* PROJECT BUTTON */
 .project-button-link-style {
   padding: clamp(10px, 2vw, 14px) clamp(18px, 3vw, 24px);
   border-radius: 12px;
@@ -206,9 +237,8 @@
   transform: scale(1.08);
 }
 
-
 /* ================================
-   MORE OPTIONS (OLD STYLE)
+   MORE OPTIONS
 ================================ */
 .more-options-wrapper a {
   padding: clamp(10px, 2vw, 14px);

@@ -25,7 +25,11 @@ function MoreOptions() {
             <p>Can handle user data 🛡️</p>
           </div>
         </a>
+
+        
       </div>
+      
+      
 
       <p className="coming-soon-text">🚧 More exciting features coming soon!</p>
    <p className="coming-soon-text">

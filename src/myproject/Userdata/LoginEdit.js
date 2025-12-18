@@ -3,8 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./LoginEdit.css";
 import API_BASE_URL from "../config/apiConfig";
+import Login from "./Login";
 
-// single endpoint source
 const USERS_API = `${API_BASE_URL}/api/users`;
 
 function LoginEdit() {
@@ -14,6 +14,9 @@ function LoginEdit() {
   const email = location.state?.email;
   const number = location.state?.number;
 
+  const isGoogleUser = location.state?.authProvider === "GOOGLE";
+  const googleUser = isGoogleUser ? location.state : null;
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -22,6 +25,7 @@ function LoginEdit() {
     update: false,
     delete: false,
     logout: false,
+    custom: false,
   });
 
   // 🚫 block direct access
@@ -31,51 +35,99 @@ function LoginEdit() {
     }
   }, [location.state, navigate]);
 
-  // 📡 fetch user
+  // ✅ store Google user details (optional, your existing logic)
+  useEffect(() => {
+    if (isGoogleUser && googleUser) {
+      localStorage.setItem(
+        "googleUser",
+        JSON.stringify({
+          name: googleUser.name,
+          email: googleUser.email,
+          picture: googleUser.picture,
+          emailVerified: googleUser.emailVerified,
+          locale: googleUser.locale,
+          authProvider: "GOOGLE",
+        })
+      );
+    }
+  }, [isGoogleUser, googleUser]);
+
+  // 📡 fetch normal user by number
   useEffect(() => {
     if (!number) return;
 
-    let isMounted = true;
+    let alive = true;
     setLoading(true);
 
     axios
       .get(`${USERS_API}/getbynumber/${number}`)
       .then((res) => {
-        if (isMounted) {
-          setUser(res.data?.data || null);
-        }
+        if (alive) setUser(res.data?.data || null);
       })
       .catch(() => {
         setMessage("❌ User not found");
         navigate("/", { replace: true });
       })
-      .finally(() => isMounted && setLoading(false));
+      .finally(() => alive && setLoading(false));
 
     return () => {
-      isMounted = false;
+      alive = false;
     };
   }, [number, navigate]);
 
+  // ✅ FINAL SOURCE OF TRUTH → HEADER DATA
+  useEffect(() => {
+    // Google user → header
+    if (isGoogleUser && googleUser) {
+      localStorage.setItem(
+        "headerUser",
+        JSON.stringify({
+          name: googleUser.name,
+          email: googleUser.email,
+          image: googleUser.picture || null,
+        })
+      );
+      return;
+    }
+
+    // Normal user → header (after backend fetch)
+    if (user && email) {
+      localStorage.setItem(
+        "headerUser",
+        JSON.stringify({
+          name: user.username,
+          email: email,
+          image: null,
+        })
+      );
+    }
+  }, [isGoogleUser, googleUser, user, email]);
+
   const handleDelete = async () => {
     if (loading) return;
-
     setLoading(true);
-    setMessage("");
 
     try {
       await axios.delete(`${USERS_API}/delete/${number}`);
+      localStorage.removeItem("googleUser");
+      localStorage.removeItem("headerUser");
       navigate("/", { replace: true });
-    } catch (err) {
-      console.error("DELETE ERROR:", err?.message);
+    } catch {
       setMessage("❌ Failed to delete user");
     } finally {
       setLoading(false);
-      setPopup({ delete: false });
+      setPopup({ ...popup, delete: false });
     }
   };
 
   const handleUpdate = () => {
     navigate("/UpdateUser", { state: { number } });
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("googleUser");
+    localStorage.removeItem("headerUser");
+    navigate("/", { replace: true });
   };
 
   if (!location.state) return null;
@@ -85,6 +137,28 @@ function LoginEdit() {
       <h2>Welcome User</h2>
 
       {loading && <p className="msg warn">Loading...</p>}
+
+      {isGoogleUser && (
+        <div className="google-card">
+          {googleUser.picture && (
+            <img
+              src={googleUser.picture}
+              alt="Profile"
+              className="google-avatar"
+            />
+          )}
+          <p><strong>Name:</strong> {googleUser.name}</p>
+          <p><strong>Email:</strong> {googleUser.email}</p>
+          <p>
+            <strong>Email Verified:</strong>{" "}
+            {googleUser.emailVerified ? "Yes" : "No"}
+          </p>
+          {googleUser.locale && (
+            <p><strong>Locale:</strong> {googleUser.locale}</p>
+          )}
+          <p className="google-badge">Signed in with Google</p>
+        </div>
+      )}
 
       <div className="info-box">
         <p><strong>Email:</strong> {email}</p>
@@ -100,84 +174,89 @@ function LoginEdit() {
       </div>
 
       {message && <p className="msg error">{message}</p>}
+      
+    <button onClick={() => navigate("/dashboard")}>Dashboard </button>
+    
+      <button className="btn" onClick={() => setPopup({ ...popup, custom: true })}>
+        Open Popup
+      </button>
 
-      <button
-        className="btn update"
-        onClick={() => setPopup({ update: true })}
-        disabled={loading}
-      >
+      <button className="btn update" onClick={() => setPopup({ ...popup, update: true })}>
         Update User
       </button>
 
-      <button
-        className="btn delete"
-        onClick={() => setPopup({ delete: true })}
-        disabled={loading}
-      >
+      <button className="btn delete" onClick={() => setPopup({ ...popup, delete: true })}>
         Delete User
       </button>
 
-      <button
-        className="btn logout"
-        onClick={() => setPopup({ logout: true })}
-        disabled={loading}
-      >
+      <button className="btn logout" onClick={() => setPopup({ ...popup, logout: true })}>
         Logout
       </button>
 
-        <a href="/dashboard" className="more-option-card">
-          <div className="icon-circle">🆓</div>
-          <div className="option-text">
-            <h3>user purpose </h3>
-            <p>user can use </p>
-          </div>
-        </a>
+      {popup.custom && (
+        <ContentPopup
+          title="User Registration"
+          onClose={() => setPopup({ ...popup, custom: false })}
+        >
+          <Login />
+        </ContentPopup>
+      )}
 
-      {/* POPUPS */}
       {popup.update && (
-        <Popup
+        <ConfirmPopup
           title="Update User?"
           message="Do you want to update this user's information?"
-          onCancel={() => setPopup({ update: false })}
+          onCancel={() => setPopup({ ...popup, update: false })}
           onConfirm={handleUpdate}
         />
       )}
 
       {popup.delete && (
-        <Popup
+        <ConfirmPopup
           title="Delete User?"
           message="Are you sure? This cannot be undone."
-          onCancel={() => setPopup({ delete: false })}
+          onCancel={() => setPopup({ ...popup, delete: false })}
           onConfirm={handleDelete}
         />
       )}
 
       {popup.logout && (
-        <Popup
+        <ConfirmPopup
           title="Logout?"
           message="Do you want to logout?"
-          onCancel={() => setPopup({ logout: false })}
-          onConfirm={() => navigate("/", { replace: true })}
+          onCancel={() => setPopup({ ...popup, logout: false })}
+          onConfirm={handleLogout}
         />
       )}
     </div>
   );
 }
 
-function Popup({ title, message, onCancel, onConfirm }) {
+/* ================= POPUPS ================= */
+
+function ConfirmPopup({ title, message, onCancel, onConfirm }) {
   return (
     <div className="popup-overlay">
       <div className="popup-box">
         <h3>{title}</h3>
         <p>{message}</p>
-
         <div className="popup-buttons">
-          <button className="cancel" onClick={onCancel}>
-            Cancel
-          </button>
-          <button className="ok" onClick={onConfirm}>
-            Yes
-          </button>
+          <button className="cancel" onClick={onCancel}>Cancel</button>
+          <button className="ok" onClick={onConfirm}>Yes</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ContentPopup({ title, children, onClose }) {
+  return (
+    <div className="popup-overlay">
+      <div className="popup-box">
+        <h3>{title}</h3>
+        <div className="popup-content">{children}</div>
+        <div className="popup-buttons">
+          <button className="cancel" onClick={onClose}>Close</button>
         </div>
       </div>
     </div>

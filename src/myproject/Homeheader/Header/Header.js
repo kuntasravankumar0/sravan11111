@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import MoreOptions from "./MoreOptions";
@@ -6,14 +6,40 @@ import MoreOptions from "./MoreOptions";
 function Header() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [activeContent, setActiveContent] = useState("");
+  const [headerUser, setHeaderUser] = useState(null);
+
+  // 🔹 Read user info for header (Google or Normal)
+  useEffect(() => {
+    const storedUser = localStorage.getItem("headerUser");
+    if (storedUser) {
+      setHeaderUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   return (
     <div>
       <header className="header-navigation-bar-container">
-        <div className="site-owner-name-display-section">K Sravan</div>
+        <div className="site-owner-name-display-section">
+          {headerUser ? (
+            <div className="header-user-info">
+              {headerUser.image && (
+                <img
+                  src={headerUser.image}
+                  alt="profile"
+                  className="header-user-avatar"
+                />
+              )}
+              <div>
+                <div className="header-user-name">{headerUser.name}</div>
+                <div className="header-user-email">{headerUser.email}</div>
+              </div>
+            </div>
+          ) : (
+            "K Sravan"
+          )}
+        </div>
 
         <nav className="navigation-menu-items-wrapper">
-          {/* External links → <a> */}
           <a
             href="https://sravan11111.wordpress.com"
             target="_blank"
@@ -30,12 +56,8 @@ function Header() {
             Insta
           </a>
 
-          {/* Internal route → Link */}
-          <Link to="/skills">
-            About
-          </Link>
+          <Link to="/skills">About</Link>
 
-          {/* Action → button */}
           <button
             type="button"
             className="nav-link-button"
@@ -47,7 +69,6 @@ function Header() {
             Projects
           </button>
 
-          {/* Action → button */}
           <button
             type="button"
             className="nav-link-button"
@@ -89,7 +110,6 @@ function Header() {
                 </center>
 
                 <div className="projects-grid-display-container">
-                  {/* Employee */}
                   <div className="project-card-display-container">
                     <div className="project-info-section-wrapper">
                       <img
@@ -114,7 +134,6 @@ function Header() {
                     </Link>
                   </div>
 
-                  {/* Property */}
                   <div className="project-card-display-container">
                     <div className="project-info-section-wrapper">
                       <img
@@ -139,7 +158,6 @@ function Header() {
                     </Link>
                   </div>
 
-                  {/* Voting */}
                   <div className="project-card-display-container">
                     <div className="project-info-section-wrapper">
                       <img
