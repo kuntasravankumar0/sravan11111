@@ -172,3 +172,355 @@
     color: var(--text-secondary);
     font-size: 14px;
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .user-table-container {
+        padding: 16px;
+        margin: 10px;
+    }
+
+    .user-table-container .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .user-table-container h1 {
+        font-size: 20px;
+    }
+
+    .user-table-container .stats-compact {
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 12px;
+    }
+
+    .user-table-container .controls-compact {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+
+    .user-table-container .tabs {
+        align-self: flex-start;
+    }
+
+    .user-table-container .search-mini {
+        width: 100%;
+    }
+
+    /* Mobile Table Layout */
+    .user-table-container .table-card {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .user-table-container .users-table {
+        min-width: 600px; /* Ensure table doesn't get too cramped */
+    }
+
+    .user-table-container .users-table th,
+    .user-table-container .users-table td {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .user-table-container .users-table th {
+        font-size: 11px;
+    }
+
+    /* Hide less important columns on very small screens */
+    .user-table-container .users-table th:nth-child(1),
+    .user-table-container .users-table td:nth-child(1) {
+        display: none; /* Hide ID column */
+    }
+
+    .user-table-container .profile-img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .user-table-container .status-badge {
+        padding: 2px 6px;
+        font-size: 10px;
+    }
+
+    .user-table-container .action-buttons {
+        gap: 4px;
+    }
+
+    .user-table-container .btn-icon {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    /* Edit form adjustments */
+    .user-table-container input[size="10"] {
+        width: 80px;
+    }
+
+    .user-table-container input[size="15"] {
+        width: 120px;
+    }
+
+    .user-table-container select {
+        font-size: 11px;
+        padding: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-table-container {
+        padding: 12px;
+        margin: 5px;
+    }
+
+    .user-table-container h1 {
+        font-size: 18px;
+    }
+
+    .user-table-container .stats-compact {
+        font-size: 11px;
+        gap: 8px;
+    }
+
+    .user-table-container .tab-button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    /* Very small screens - stack table data */
+    .user-table-container .users-table {
+        min-width: 500px;
+    }
+
+    .user-table-container .users-table th,
+    .user-table-container .users-table td {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+
+    /* Hide mobile number column on very small screens for regular users */
+    .user-table-container .users-table th:nth-child(4),
+    .user-table-container .users-table td:nth-child(4) {
+        display: none;
+    }
+}
+
+/* Horizontal scroll indicator */
+.user-table-container .table-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(to left, rgba(255,255,255,0.8), transparent);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .user-table-container .table-card {
+        position: relative;
+    }
+    
+    .user-table-container .table-card::after {
+        opacity: 1;
+    }
+}
+
+/* Touch-friendly buttons */
+@media (hover: none) and (pointer: coarse) {
+    .user-table-container .btn-icon {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .user-table-container .tab-button {
+        min-height: 44px;
+        padding: 8px 16px;
+    }
+}
+/* Mobile Card View Styles */
+.user-table-container .mobile-card-view {
+    display: none;
+}
+
+.user-table-container .user-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.user-table-container .user-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.user-table-container .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.user-table-container .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+}
+
+.user-table-container .user-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.user-table-container .user-id {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-family: 'Roboto Mono', monospace;
+}
+
+.user-table-container .user-email {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.user-table-container .user-status {
+    flex-shrink: 0;
+}
+
+.user-table-container .user-card-body {
+    margin-bottom: 16px;
+}
+
+.user-table-container .user-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.user-table-container .user-detail:last-child {
+    border-bottom: none;
+}
+
+.user-table-container .user-detail .label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.user-table-container .user-detail .value {
+    color: var(--text-primary);
+    font-size: 14px;
+    text-align: right;
+    word-break: break-word;
+}
+
+.user-table-container .user-card-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.user-table-container .user-card-actions .btn-icon {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: auto;
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    color: var(--text-primary);
+}
+
+.user-table-container .user-card-actions .btn-icon.delete {
+    background: #fce8e6;
+    color: #d93025;
+    border-color: #f8d7da;
+}
+
+.user-table-container .user-card-actions .btn-icon:hover {
+    background: #e8f0fe;
+    border-color: #4285f4;
+}
+
+.user-table-container .user-card-actions .btn-icon.delete:hover {
+    background: #f5c6cb;
+    border-color: #d93025;
+}
+
+/* Show/Hide Views Based on Screen Size */
+@media (max-width: 768px) {
+    .user-table-container .desktop-table-view {
+        display: none;
+    }
+
+    .user-table-container .mobile-card-view {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .user-table-container .desktop-table-view {
+        display: block;
+    }
+
+    .user-table-container .mobile-card-view {
+        display: none;
+    }
+}
+
+/* Enhanced mobile card styles */
+@media (max-width: 480px) {
+    .user-table-container .user-card {
+        padding: 12px;
+        margin-bottom: 8px;
+    }
+
+    .user-table-container .user-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .user-table-container .user-info {
+        width: 100%;
+    }
+
+    .user-table-container .user-status {
+        align-self: flex-end;
+    }
+
+    .user-table-container .user-card-actions {
+        width: 100%;
+        justify-content: center;
+        margin-top: 8px;
+    }
+
+    .user-table-container .user-card-actions .btn-icon {
+        flex: 1;
+        justify-content: center;
+        max-width: 120px;
+    }
+}

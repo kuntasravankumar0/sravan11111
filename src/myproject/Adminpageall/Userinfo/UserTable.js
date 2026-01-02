@@ -112,79 +112,137 @@ export default function UserTable() {
 
       <div className="table-card" style={{ border: '1px solid #ddd', borderRadius: '8px', overflow: 'hidden' }}>
         {loading ? <div style={{ padding: '20px', textAlign: 'center' }}>Updating...</div> : (
-          <table className="users-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead style={{ background: '#f9f9f9' }}>
-              {activeTab === "regular" ? (
-                <tr>
-                  <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>ID</th>
-                  <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Name</th>
-                  <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Email</th>
-                  <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Mobile</th>
-                  <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Status</th>
-                  <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Actions</th>
-                </tr>
-              ) : (
-                <tr>
-                  <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Pic</th>
-                  <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Name</th>
-                  <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Email</th>
-                  <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Status</th>
-                  <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Actions</th>
-                </tr>
-              )}
-            </thead>
-            <tbody>
-              {filteredUsers.map(u => (
-                <tr key={u.id} style={{ borderBottom: '1px solid #f9f9f9' }}>
+          <>
+            {/* Desktop Table View */}
+            <div className="desktop-table-view">
+              <table className="users-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead style={{ background: '#f9f9f9' }}>
                   {activeTab === "regular" ? (
-                    <>
-                      <td style={{ padding: '12px 10px', color: '#888' }}>#{u.id}</td>
-                      {editUserId === u.id ? (
+                    <tr>
+                      <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>ID</th>
+                      <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Name</th>
+                      <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Email</th>
+                      <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Mobile</th>
+                      <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Status</th>
+                      <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Actions</th>
+                    </tr>
+                  ) : (
+                    <tr>
+                      <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Pic</th>
+                      <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Name</th>
+                      <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Email</th>
+                      <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Status</th>
+                      <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Actions</th>
+                    </tr>
+                  )}
+                </thead>
+                <tbody>
+                  {filteredUsers.map(u => (
+                    <tr key={u.id} style={{ borderBottom: '1px solid #f9f9f9' }}>
+                      {activeTab === "regular" ? (
                         <>
-                          <td style={{ padding: '8px' }}><input size="10" value={form.username} onChange={e => setForm({ ...form, username: e.target.value })} /></td>
-                          <td style={{ padding: '8px' }}><input size="15" value={form.useremail} onChange={e => setForm({ ...form, useremail: e.target.value })} /></td>
-                          <td style={{ padding: '8px' }}>{u.number}</td>
-                          <td style={{ padding: '8px' }}>
-                            <select value={form.status} onChange={e => setForm({ ...form, status: e.target.value })}>
-                              <option value="ONLINE">ON</option>
-                              <option value="OFFLINE">OFF</option>
-                            </select>
-                          </td>
-                          <td style={{ padding: '8px' }}>
-                            <button onClick={saveUser}>✅</button>
-                            <button onClick={() => setEditUserId(null)}>❌</button>
-                          </td>
+                          <td style={{ padding: '12px 10px', color: '#888' }}>#{u.id}</td>
+                          {editUserId === u.id ? (
+                            <>
+                              <td style={{ padding: '8px' }}><input size="10" value={form.username} onChange={e => setForm({ ...form, username: e.target.value })} /></td>
+                              <td style={{ padding: '8px' }}><input size="15" value={form.useremail} onChange={e => setForm({ ...form, useremail: e.target.value })} /></td>
+                              <td style={{ padding: '8px' }}>{u.number}</td>
+                              <td style={{ padding: '8px' }}>
+                                <select value={form.status} onChange={e => setForm({ ...form, status: e.target.value })}>
+                                  <option value="ONLINE">ON</option>
+                                  <option value="OFFLINE">OFF</option>
+                                </select>
+                              </td>
+                              <td style={{ padding: '8px' }}>
+                                <button onClick={saveUser}>✅</button>
+                                <button onClick={() => setEditUserId(null)}>❌</button>
+                              </td>
+                            </>
+                          ) : (
+                            <>
+                              <td style={{ padding: '12px 10px', fontWeight: '500' }}>{u.username}</td>
+                              <td style={{ padding: '12px 10px' }}>{u.useremail}</td>
+                              <td style={{ padding: '12px 10px' }}>{u.number}</td>
+                              <td style={{ padding: '12px 10px' }}>
+                                <span className={`status-badge ${u.status === 'ONLINE' ? 'status-online' : 'status-offline'}`} style={{ fontSize: '11px' }}>{u.status}</span>
+                              </td>
+                              <td style={{ padding: '12px 10px' }}>
+                                <button className="btn-icon" onClick={() => startEdit(u)}>✏️</button>
+                                <button className="btn-icon" onClick={() => deleteUser(u.number)}>🗑️</button>
+                              </td>
+                            </>
+                          )}
                         </>
                       ) : (
                         <>
-                          <td style={{ padding: '12px 10px', fontWeight: '500' }}>{u.username}</td>
-                          <td style={{ padding: '12px 10px' }}>{u.useremail}</td>
-                          <td style={{ padding: '12px 10px' }}>{u.number}</td>
-                          <td style={{ padding: '12px 10px' }}>
-                            <span className={`status-badge ${u.status === 'ONLINE' ? 'status-online' : 'status-offline'}`} style={{ fontSize: '11px' }}>{u.status}</span>
-                          </td>
-                          <td style={{ padding: '12px 10px' }}>
-                            <button className="btn-icon" onClick={() => startEdit(u)}>✏️</button>
-                            <button className="btn-icon" onClick={() => deleteUser(u.number)}>🗑️</button>
+                          <td style={{ padding: '10px' }}><img src={u.picture || 'https://via.placeholder.com/30'} alt="" style={{ width: '30px', height: '30px', borderRadius: '50%' }} /></td>
+                          <td style={{ padding: '10px', fontWeight: '500' }}>{u.name}</td>
+                          <td style={{ padding: '10px' }}>{u.email}</td>
+                          <td style={{ padding: '10px' }}><span className={`status-badge ${u.status === 'ONLINE' ? 'status-online' : 'status-offline'}`} style={{ fontSize: '11px' }}>{u.status}</span></td>
+                          <td style={{ padding: '10px' }}>
+                            <button className="btn-icon" onClick={() => deleteUser(null, true, u.googleId)}>🗑️</button>
                           </td>
                         </>
                       )}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Card View */}
+            <div className="mobile-card-view">
+              {filteredUsers.map(u => (
+                <div key={u.id} className="user-card">
+                  {activeTab === "regular" ? (
+                    <>
+                      <div className="user-card-header">
+                        <div className="user-info">
+                          <div className="user-name">{u.username}</div>
+                          <div className="user-id">#{u.id}</div>
+                        </div>
+                        <div className="user-status">
+                          <span className={`status-badge ${u.status === 'ONLINE' ? 'status-online' : 'status-offline'}`}>{u.status}</span>
+                        </div>
+                      </div>
+                      <div className="user-card-body">
+                        <div className="user-detail">
+                          <span className="label">Email:</span>
+                          <span className="value">{u.useremail}</span>
+                        </div>
+                        <div className="user-detail">
+                          <span className="label">Mobile:</span>
+                          <span className="value">{u.number}</span>
+                        </div>
+                      </div>
+                      <div className="user-card-actions">
+                        <button className="btn-icon" onClick={() => startEdit(u)}>✏️ Edit</button>
+                        <button className="btn-icon delete" onClick={() => deleteUser(u.number)}>🗑️ Delete</button>
+                      </div>
                     </>
                   ) : (
                     <>
-                      <td style={{ padding: '10px' }}><img src={u.picture || 'https://via.placeholder.com/30'} alt="" style={{ width: '30px', height: '30px', borderRadius: '50%' }} /></td>
-                      <td style={{ padding: '10px', fontWeight: '500' }}>{u.name}</td>
-                      <td style={{ padding: '10px' }}>{u.email}</td>
-                      <td style={{ padding: '10px' }}><span className={`status-badge ${u.status === 'ONLINE' ? 'status-online' : 'status-offline'}`} style={{ fontSize: '11px' }}>{u.status}</span></td>
-                      <td style={{ padding: '10px' }}>
-                        <button className="btn-icon" onClick={() => deleteUser(null, true, u.googleId)}>🗑️</button>
-                      </td>
+                      <div className="user-card-header">
+                        <div className="user-info">
+                          <img src={u.picture || 'https://via.placeholder.com/40'} alt="" className="user-avatar" />
+                          <div>
+                            <div className="user-name">{u.name}</div>
+                            <div className="user-email">{u.email}</div>
+                          </div>
+                        </div>
+                        <div className="user-status">
+                          <span className={`status-badge ${u.status === 'ONLINE' ? 'status-online' : 'status-offline'}`}>{u.status}</span>
+                        </div>
+                      </div>
+                      <div className="user-card-actions">
+                        <button className="btn-icon delete" onClick={() => deleteUser(null, true, u.googleId)}>🗑️ Delete</button>
+                      </div>
                     </>
                   )}
-                </tr>
+                </div>
               ))}
-            </tbody>
-          </table>
+            </div>
+          </>
         )}
       </div>
     </div>
