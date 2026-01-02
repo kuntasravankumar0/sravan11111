@@ -133,40 +133,174 @@ function LoginEdit() {
     navigate("/", { replace: true });
   };
 
-  const handleDownloadData = () => {
+  const handleDownloadData = async () => {
     const userData = isGoogleUser && googleUser ? {
       name: googleUser.name,
       email: googleUser.email,
       picture: googleUser.picture,
       emailVerified: googleUser.emailVerified,
-      locale: googleUser.locale,
       authProvider: "GOOGLE",
-      downloadDate: new Date().toISOString(),
+      downloadDate: new Date().toLocaleDateString(),
+      downloadTime: new Date().toLocaleTimeString(),
     } : {
-      username: user?.username,
+      name: user?.username,
       email: email,
+      customerId: user?.id || 'N/A',
       number: number,
       authProvider: user?.authProvider || "MANUAL",
       status: user?.status,
-      latitude: user?.latitude,
-      longitude: user?.longitude,
-      downloadDate: new Date().toISOString(),
+      emailVerified: false,
+      downloadDate: new Date().toLocaleDateString(),
+      downloadTime: new Date().toLocaleTimeString(),
     };
 
-    const dataStr = JSON.stringify(userData, null, 2);
-    const dataBlob = new Blob([dataStr], { type: 'application/json' });
-    const url = URL.createObjectURL(dataBlob);
+    // Create canvas for image generation
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
     
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `user-data-${userData.email || userData.username}-${new Date().toISOString().split('T')[0]}.json`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    // Set canvas size
+    canvas.width = 800;
+    canvas.height = 600;
+    
+    // Add roundRect polyfill if not available
+    if (!ctx.roundRect) {
+      ctx.roundRect = function(x, y, width, height, radius) {
+        this.beginPath();
+        this.moveTo(x + radius, y);
+        this.lineTo(x + width - radius, y);
+        this.quadraticCurveTo(x + width, y, x + width, y + radius);
+        this.lineTo(x + width, y + height - radius);
+        this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        this.lineTo(x + radius, y + height);
+        this.quadraticCurveTo(x, y + height, x, y + height - radius);
+        this.lineTo(x, y + radius);
+        this.quadraticCurveTo(x, y, x + radius, y);
+        this.closePath();
+      };
+    }
+    
+    // Background gradient
+    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    gradient.addColorStop(0, '#4f46e5');
+    gradient.addColorStop(1, '#7c3aed');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // White card background with shadow
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+    ctx.shadowBlur = 20;
+    ctx.shadowOffsetY = 10;
+    ctx.fillStyle = '#ffffff';
+    ctx.roundRect(50, 50, canvas.width - 100, canvas.height - 100, 20);
+    ctx.fill();
+    
+    // Reset shadow
+    ctx.shadowColor = 'transparent';
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetY = 0;
+    
+    // Header section
+    ctx.fillStyle = '#1f2937';
+    ctx.font = 'bold 32px Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('USER DATA CARD', canvas.width / 2, 120);
+    
+    // Subtitle
+    ctx.fillStyle = '#6b7280';
+    ctx.font = '16px Arial, sans-serif';
+    ctx.fillText('Personal Information & Account Details', canvas.width / 2, 150);
+    
+    // Decorative line
+    ctx.strokeStyle = '#e5e7eb';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(100, 170);
+    ctx.lineTo(700, 170);
+    ctx.stroke();
+    
+    // User info section
+    const leftCol = 100;
+    const rightCol = 450;
+    let yPos = 220;
+    
+    // Helper function to draw info row
+    const drawInfoRow = (label, value, x, y) => {
+      // Label
+      ctx.fillStyle = '#374151';
+      ctx.font = 'bold 16px Arial, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(label + ':', x, y);
+      
+      // Value
+      ctx.fillStyle = '#1f2937';
+      ctx.font = '16px Arial, sans-serif';
+      const displayValue = value || 'N/A';
+      ctx.fillText(displayValue, x, y + 25);
+      
+      // Underline
+      ctx.strokeStyle = '#f3f4f6';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x, y + 35);
+      ctx.lineTo(x + 300, y + 35);
+      ctx.stroke();
+    };
+    
+    // Left column
+    drawInfoRow('Full Name', userData.name, leftCol, yPos);
+    drawInfoRow('Email Address', userData.email, leftCol, yPos + 80);
+    drawInfoRow('Customer ID', userData.customerId || 'Google User', leftCol, yPos + 160);
+    
+    // Right column
+    drawInfoRow('Auth Provider', userData.authProvider, rightCol, yPos);
+    drawInfoRow('Email Verified', userData.emailVerified ? '✅ Yes' : '❌ No', rightCol, yPos + 80);
+    drawInfoRow('Account Status', userData.status || 'Active', rightCol, yPos + 160);
+    
+    // Footer section
+    ctx.fillStyle = '#f9fafb';
+    ctx.roundRect(70, 470, canvas.width - 140, 60, 10);
+    ctx.fill();
+    
+    ctx.fillStyle = '#6b7280';
+    ctx.font = '14px Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(`Downloaded on ${userData.downloadDate} at ${userData.downloadTime}`, canvas.width / 2, 495);
+    ctx.fillText('This document contains personal information - handle with care', canvas.width / 2, 515);
+    
+    // Add verification badge if email is verified
+    if (userData.emailVerified) {
+      ctx.fillStyle = '#10b981';
+      ctx.beginPath();
+      ctx.arc(680, 120, 20, 0, 2 * Math.PI);
+      ctx.fill();
+      
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 18px Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('✓', 680, 127);
+    }
+    
+    // Add company/app branding
+    ctx.fillStyle = '#9ca3af';
+    ctx.font = 'bold 12px Arial, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText('Generated by K Sravan App', canvas.width - 70, canvas.height - 70);
+    
+    // Convert canvas to blob and download
+    canvas.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      const fileName = `user-data-card-${userData.name?.replace(/[^a-zA-Z0-9]/g, '-') || 'user'}-${new Date().toISOString().split('T')[0]}.png`;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }, 'image/png', 0.95);
     
     setPopup({ ...popup, downloadData: false });
-    setMessage("✅ User data downloaded successfully!");
+    setMessage("✅ User data card downloaded as image successfully!");
     setTimeout(() => setMessage(""), 3000);
   };
 
@@ -799,7 +933,7 @@ function LoginEdit() {
           <div className="popup-box">
             <h3 className="popup-title">📥 Download User Data</h3>
             <p className="popup-message">
-              Download your account information as a JSON file. This includes your profile data, settings, and account details.
+              Download your account information as a professional data card image. This includes your profile data, customer ID, email verification status, and account details in a secure, shareable format.
             </p>
             <div className="popup-buttons">
               <button
@@ -812,7 +946,7 @@ function LoginEdit() {
                 className="popup-btn popup-btn-primary"
                 onClick={handleDownloadData}
               >
-                📥 Download
+                📥 Download Image
               </button>
             </div>
           </div>
