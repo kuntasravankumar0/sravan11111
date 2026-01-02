@@ -1,0 +1,221 @@
+.links-manager {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+.links-manager .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.links-manager h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.links-manager .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.links-manager .stat-card {
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.links-manager .stat-icon {
+  font-size: 32px;
+  background: var(--primary-light);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.links-manager .stat-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.links-manager .message {
+  padding: 16px 24px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 24px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.links-manager .message-success {
+  background: #e6f4ea;
+  color: #1e8e3e;
+  border: 1px solid #ceead6;
+}
+
+.links-manager .message-error {
+  background: #fce8e6;
+  color: #d93025;
+  border: 1px solid #fad2cf;
+}
+
+.links-manager .message-info {
+  background: #e8f0fe;
+  color: #1967d2;
+  border: 1px solid #d2e3fc;
+}
+
+.links-manager .form-card {
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.links-manager .form-header {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links-manager .form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.links-manager .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.links-manager .input-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.links-manager .form-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+}
+
+.links-manager .table-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.links-manager .table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.links-manager .table-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.links-manager .links-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.links-manager .links-table th {
+  text-align: left;
+  padding: 12px 24px;
+  background: var(--bg-color);
+  color: var(--text-secondary);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.links-manager .links-table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.links-manager .category-badge {
+  background: var(--primary-light);
+  color: var(--primary-color);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.links-manager .action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.links-manager .btn-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.links-manager .btn-icon:hover {
+  background: var(--bg-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.links-manager .search-filter-card {
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  margin-bottom: 24px;
+}
+
+.links-manager .search-filter-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+.links-manager .search-input-wrapper {
+  position: relative;
+}
+
+.links-manager .search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+}
+
+.links-manager .spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--bg-color);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}

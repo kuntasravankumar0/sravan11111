@@ -1,0 +1,151 @@
+/* =====================================================
+   MORE OPTIONS CONTAINER
+====================================================== */
+.more-options-container {
+  width: 100%;
+  text-align: center;
+  padding: clamp(20px, 4vw, 35px);
+  color: #000;
+}
+
+.more-options-title {
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 800;
+  margin-bottom: clamp(15px, 3vw, 25px);
+  color: #111;
+  position: relative;
+  display: inline-block;
+}
+
+/* Title underline animation */
+.more-options-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  width: 0%;
+  height: 3px;
+  background: #000;
+  transform: translateX(-50%);
+  transition: width 0.4s ease;
+}
+
+.more-options-title:hover::after {
+  width: 70%;
+}
+
+
+/* =====================================================
+   GRID LAYOUT
+====================================================== */
+.more-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: clamp(14px, 3vw, 26px);
+  width: 100%;
+  margin-top: clamp(10px, 2vw, 20px);
+}
+
+
+/* =====================================================
+   OPTION CARD (MAIN ITEM)
+====================================================== */
+.more-option-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(14px);
+  display: flex;
+  flex-wrap: wrap;
+  /* ✅ FIXES AUTO ADJUST */
+  align-items: flex-start;
+  /* better alignment */
+  gap: clamp(10px, 3vw, 18px);
+  padding: clamp(14px, 3vw, 22px);
+  border-radius: 18px;
+  width: 100%;
+  /* ensure proper scaling */
+  min-width: 0;
+  /* ✅ IMPORTANT: Allows wrap on small screens */
+
+  text-decoration: none;
+  color: #111 !important;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+/* Hover remains same */
+.more-option-card:hover {
+  transform: translateY(-7px) scale(1.03);
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+
+/* =====================================================
+   ICON CIRCLE
+====================================================== */
+.icon-circle {
+  width: clamp(45px, 10vw, 60px);
+  height: clamp(45px, 10vw, 60px);
+  border-radius: 50%;
+  background: #fff;
+  font-size: clamp(20px, 5vw, 28px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  color: #222;
+  transition: 0.35s ease;
+}
+
+/* Icon hover pop */
+.more-option-card:hover .icon-circle {
+  transform: rotate(8deg) scale(1.1);
+  background: #f8f8f8;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =====================================================
+   TEXT SECTION
+====================================================== */
+.option-text h3 {
+  font-size: clamp(16px, 3vw, 20px);
+  font-weight: 700;
+  margin: 0;
+  color: #111;
+  transition: 0.3s ease;
+}
+
+.option-text p {
+  font-size: clamp(13px, 2.5vw, 16px);
+  margin: 4px 0 0;
+  color: #333;
+  transition: 0.3s ease;
+}
+
+/* Text slight animation on hover */
+.more-option-card:hover .option-text h3 {
+  color: #000;
+  transform: translateX(3px);
+}
+
+.more-option-card:hover .option-text p {
+  opacity: 0.85;
+}
+
+
+/* =====================================================
+   COMING SOON FOOTER
+====================================================== */
+.coming-soon-text {
+  margin-top: clamp(15px, 3vw, 30px);
+  font-size: clamp(14px, 2.8vw, 18px);
+  color: #060202;
+  font-weight: 500;
+  opacity: 0.9;
+}

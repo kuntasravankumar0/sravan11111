@@ -1,0 +1,71 @@
+.dashboard-wrapper {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.dashboard-wrapper h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.dashboard-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.dashboard-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  border-color: var(--primary-color);
+}
+
+.dashboard-card .icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.dashboard-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.dashboard-card p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.coming-soon {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 40px;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 20px;
+  background: var(--primary-light);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 600px) {
+  .dashboard-wrapper h1 {
+    font-size: 2rem;
+  }
+}
