@@ -1,0 +1,273 @@
+.approval-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.approval-container h2 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.approval-container.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.tab {
+  padding: 12px 24px;
+  border: none;
+  background: transparent;
+  color: #666;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  color: #28a745;
+  background: #f8f9fa;
+}
+
+.tab.active {
+  color: #28a745;
+  border-bottom-color: #28a745;
+  background: #f8f9fa;
+}
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #f5c6cb;
+}
+
+.links-container {
+  min-height: 400px;
+}
+
+.no-links {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 2px dashed #dee2e6;
+}
+
+.no-links p {
+  color: #6c757d;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.links-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+}
+
+.link-card {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.link-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.link-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.link-info {
+  flex: 1;
+}
+
+.link-title {
+  color: #333;
+  font-size: 1.1rem;
+  margin: 0 0 4px 0;
+  font-weight: 600;
+}
+
+.link-category {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.link-date {
+  color: #6c757d;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: 8px;
+}
+
+.status-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.approved {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.rejected {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.link-content {
+  margin-bottom: 16px;
+}
+
+.link-url {
+  margin-bottom: 8px;
+  word-break: break-all;
+}
+
+.link-url a {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 8px;
+}
+
+.link-url a:hover {
+  text-decoration: underline;
+}
+
+.link-description {
+  margin-bottom: 8px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.link-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.link-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.action-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.action-btn.approve {
+  background: #28a745;
+  color: white;
+}
+
+.action-btn.approve:hover:not(:disabled) {
+  background: #218838;
+}
+
+.action-btn.reject {
+  background: #ffc107;
+  color: #212529;
+}
+
+.action-btn.reject:hover:not(:disabled) {
+  background: #e0a800;
+}
+
+.action-btn.delete {
+  background: #dc3545;
+  color: white;
+}
+
+.action-btn.delete:hover:not(:disabled) {
+  background: #c82333;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .approval-container {
+    padding: 16px;
+  }
+  
+  .approval-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .links-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .link-card {
+    padding: 16px;
+  }
+  
+  .link-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .tabs {
+    flex-direction: column;
+  }
+  
+  .tab {
+    text-align: left;
+  }
+  
+  .link-meta {
+    font-size: 0.85rem;
+  }
+}

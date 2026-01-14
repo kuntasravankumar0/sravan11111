@@ -1,0 +1,139 @@
+.update-container-premium {
+  min-height: 100vh;
+  padding: 100px 20px;
+  background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.1), transparent),
+    radial-gradient(circle at bottom left, rgba(124, 58, 237, 0.1), transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.update-glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  border: none;
+  color: #6366f1;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.update-glass-card h2 {
+  text-align: center;
+  color: #0045f4;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  text-align: center;
+  color: rgba(8, 6, 6, 0.5);
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.input-field {
+  margin-bottom: 20px;
+}
+
+.input-field label {
+  display: block;
+  color: rgba(6, 11, 12, 0.7);
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #010000;
+  transition: all 0.3s ease;
+}
+
+.input-field input:focus {
+  outline: none;
+  border-color: #6366f1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.input-field input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: block;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.message-banner {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.message-banner.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.message-banner.error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #6366f1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

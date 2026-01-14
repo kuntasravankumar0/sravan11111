@@ -1,0 +1,871 @@
+/* Modern App Styles */
+.App {
+  text-align: center;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.App-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+}
+
+.App-link {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.App-link:hover {
+  color: #1d4ed8;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Enhanced Global Loader */
+.global-loader {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Enhanced floating glows */
+.global-loader::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(79,70,229,0.3), rgba(124,58,237,0.2), transparent 70%);
+  top: 15%;
+  left: 20%;
+  filter: blur(60px);
+  animation: glowMove 8s infinite alternate ease-in-out;
+}
+
+.global-loader::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(239,68,68,0.2), rgba(245,101,101,0.1), transparent 70%);
+  bottom: 20%;
+  right: 25%;
+  filter: blur(50px);
+  animation: glowMove2 10s infinite alternate ease-in-out;
+}
+
+@keyframes glowMove {
+  0% { 
+    transform: translate(-30px, -20px) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% { 
+    transform: translate(30px, 20px) scale(1.1);
+    opacity: 0.4;
+  }
+}
+
+@keyframes glowMove2 {
+  0% { 
+    transform: translate(20px, 15px) scale(0.9);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% { 
+    transform: translate(-20px, -15px) scale(1.2);
+    opacity: 0.3;
+  }
+}
+
+/* Enhanced Spinner */
+.global-spinner {
+  width: 80px;
+  height: 80px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #4f46e5;
+  border-right: 4px solid rgba(79,70,229,0.6);
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  z-index: 10;
+  position: relative;
+  box-shadow: 
+    0 0 20px rgba(79,70,229,0.4),
+    inset 0 0 20px rgba(79,70,229,0.1);
+}
+
+.global-spinner::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  border-top: 2px solid rgba(79,70,229,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 2s linear infinite reverse;
+}
+
+.global-spinner::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(79,70,229,0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 3s linear infinite;
+}
+
+/* Loading text */
+.global-loader .loading-text {
+  margin-top: 24px;
+  font-size: 1.1rem;
+  color: #e0e7ff;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  text-shadow: 0 0 15px rgba(79,70,229,0.3);
+  z-index: 10;
+  font-weight: 500;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+/* Enhanced spinner rotation */
+@keyframes spin {
+  0% { 
+    transform: rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  100% { 
+    transform: rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Enhanced fade-in */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.95);
+    filter: blur(10px);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* Global scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #3730a3, #6d28d9);
+}
+
+/* Global focus styles */
+*:focus {
+  outline: 2px solid rgba(79,70,229,0.5);
+  outline-offset: 2px;
+}
+
+/* Global selection styles */
+::selection {
+  background: rgba(79,70,229,0.2);
+  color: #2c3e50;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .App {
+    font-size: 14px;
+  }
+  
+  .global-spinner {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .global-spinner::before {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .global-spinner::after {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .global-loader .loading-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .global-spinner {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .global-spinner::before {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .global-spinner::after {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .global-loader .loading-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* ========================================
+   ADVANCED RESPONSIVE DESIGN - AUTO ADJUSTING
+   ======================================== */
+
+/* Extra Large Screens (1920px+) */
+@media (min-width: 1920px) {
+  .App {
+    font-size: 18px;
+  }
+  
+  .global-spinner {
+    width: 100px;
+    height: 100px;
+    border-width: 6px;
+  }
+  
+  .global-spinner::before {
+    width: 80px;
+    height: 80px;
+    border-width: 3px;
+  }
+  
+  .global-spinner::after {
+    width: 60px;
+    height: 60px;
+    border-width: 2px;
+  }
+  
+  .global-loader .loading-text {
+    font-size: 1.4rem;
+  }
+}
+
+/* Large Desktop (1440px - 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .App {
+    font-size: 17px;
+  }
+  
+  .global-spinner {
+    width: 90px;
+    height: 90px;
+    border-width: 5px;
+  }
+  
+  .global-spinner::before {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .global-spinner::after {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .global-loader .loading-text {
+    font-size: 1.3rem;
+  }
+}
+
+/* Standard Desktop (1200px - 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .App {
+    font-size: 16px;
+  }
+  
+  .global-spinner {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .global-spinner::before {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .global-spinner::after {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .global-loader .loading-text {
+    font-size: 1.2rem;
+  }
+}
+
+/* Small Desktop/Large Laptop (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .App {
+    font-size: 15px;
+  }
+  
+  .global-spinner {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .global-spinner::before {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .global-spinner::after {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .global-loader .loading-text {
+    font-size: 1.15rem;
+  }
+}
+
+/* Tablet Landscape (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .App {
+    font-size: 14px;
+  }
+  
+  .global-spinner {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .global-spinner::before {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .global-spinner::after {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .global-loader .loading-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* Tablet Portrait (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .App {
+    font-size: 14px;
+  }
+  
+  .global-spinner {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .global-spinner::before {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .global-spinner::after {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .global-loader .loading-text {
+    font-size: 1.05rem;
+  }
+}
+
+/* Large Mobile (480px - 575px) */
+@media (min-width: 480px) and (max-width: 575px) {
+  .App {
+    font-size: 13px;
+  }
+  
+  .global-spinner {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .global-spinner::before {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .global-spinner::after {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .global-loader .loading-text {
+    font-size: 1rem;
+  }
+}
+
+/* Standard Mobile (375px - 479px) */
+@media (min-width: 375px) and (max-width: 479px) {
+  .App {
+    font-size: 12px;
+  }
+  
+  .global-spinner {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .global-spinner::before {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .global-spinner::after {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .global-loader .loading-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* Small Mobile (320px - 374px) */
+@media (min-width: 320px) and (max-width: 374px) {
+  .App {
+    font-size: 11px;
+  }
+  
+  .global-spinner {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .global-spinner::before {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .global-spinner::after {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .global-loader .loading-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra Small Mobile (below 320px) */
+@media (max-width: 319px) {
+  .App {
+    font-size: 10px;
+  }
+  
+  .global-spinner {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .global-spinner::before {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .global-spinner::after {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .global-loader .loading-text {
+    font-size: 0.85rem;
+  }
+}
+
+/* Fluid Typography and Spacing using CSS clamp() */
+.App {
+  font-size: clamp(10px, 2.5vw, 18px);
+}
+
+.global-spinner {
+  width: clamp(45px, 8vw, 100px);
+  height: clamp(45px, 8vw, 100px);
+}
+
+.global-loader .loading-text {
+  font-size: clamp(0.85rem, 2vw, 1.4rem);
+}
+
+/* Orientation-based adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+  .global-loader {
+    padding: 10px;
+  }
+  
+  .global-spinner {
+    width: clamp(40px, 6vh, 70px);
+    height: clamp(40px, 6vh, 70px);
+  }
+  
+  .global-loader .loading-text {
+    font-size: clamp(0.8rem, 1.5vh, 1.1rem);
+    margin-top: 12px;
+  }
+}
+
+/* High DPI/Retina Display Adjustments */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .global-spinner {
+    border-width: clamp(2px, 0.5vw, 6px);
+  }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .global-spinner,
+  .global-spinner::before,
+  .global-spinner::after {
+    animation-duration: 3s;
+  }
+  
+  .global-loader::before,
+  .global-loader::after {
+    animation: none;
+  }
+}
+
+/* Container Query Support (Future-proofing) */
+@supports (container-type: inline-size) {
+  .App {
+    container-type: inline-size;
+  }
+  
+  @container (min-width: 768px) {
+    .global-spinner {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+/* Error Boundary Styles */
+.error-boundary {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+  padding: 20px;
+}
+
+.error-boundary-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  color: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.error-boundary-content h2 {
+  margin-bottom: 16px;
+  color: #f87171;
+  font-size: 1.8rem;
+}
+
+.error-boundary-content p {
+  margin-bottom: 30px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.error-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.error-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  min-width: 120px;
+}
+
+.error-btn.primary {
+  background: #4f46e5;
+  color: white;
+}
+
+.error-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.error-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.error-btn.primary:hover {
+  background: #3730a3;
+}
+
+.error-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.error-details {
+  margin-top: 30px;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.error-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fbbf24;
+}
+
+.error-stack {
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #e5e7eb;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* App Error Styles */
+.app-error {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  padding: 20px;
+}
+
+.app-error .error-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  color: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.app-error h2 {
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+}
+
+.app-error p {
+  margin-bottom: 30px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.retry-btn {
+  padding: 12px 24px;
+  background: white;
+  color: #dc2626;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  min-width: 120px;
+}
+
+.retry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background: #f9fafb;
+}
+
+/* App Container Styles */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 120px; /* Account for fixed header */
+}
+
+/* 404 Not Found Styles */
+.not-found {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.not-found h2 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  color: var(--text-primary, #2c3e50);
+}
+
+.not-found p {
+  font-size: 1.1rem;
+  color: var(--text-secondary, #666);
+  margin-bottom: 30px;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .error-boundary-content,
+  .app-error .error-content {
+    padding: 30px 20px;
+    margin: 0 10px;
+  }
+  
+  .error-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .error-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .main-content {
+    padding-top: 90px; /* Smaller header on mobile */
+  }
+  
+  .not-found h2 {
+    font-size: 2rem;
+  }
+  
+  .not-found p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-boundary-content,
+  .app-error .error-content {
+    padding: 25px 15px;
+  }
+  
+  .error-boundary-content h2,
+  .app-error h2 {
+    font-size: 1.5rem;
+  }
+  
+  .main-content {
+    padding-top: 80px;
+  }
+}

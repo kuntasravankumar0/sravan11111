@@ -1,0 +1,233 @@
+.admin-dashboard-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #f8fafc;
+    min-height: 100vh;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.admin-header-premium {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    background: #1e293b;
+    padding: 40px;
+    border-radius: 24px;
+    color: white;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.header-info h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+    color: #f8fafc;
+}
+
+.header-info p {
+    color: #94a3b8;
+    font-size: 16px;
+}
+
+.admin-logout-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.admin-logout-btn:hover {
+    background: #ef4444;
+    border-color: #ef4444;
+}
+
+.admin-stats-overview {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.admin-stat-pill {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid #e2e8f0;
+    font-size: 14px;
+}
+
+.pill-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.pill-dot.red {
+    background: #ef4444;
+    box-shadow: 0 0 10px #ef4444;
+}
+
+.pill-dot.green {
+    background: #10b981;
+}
+
+.pill-dot.blue {
+    background: #3b82f6;
+}
+
+.pill-label {
+    color: #64748b;
+    font-weight: 500;
+}
+
+.pill-value {
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.admin-sections-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.admin-category-section h2 {
+    font-size: 18px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.admin-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.admin-card-premium {
+    background: white;
+    padding: 24px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+}
+
+.admin-card-premium:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+    border-color: #3b82f6;
+}
+
+.card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.card-icon.blue {
+    background: #eff6ff;
+    color: #3b82f6;
+}
+
+.card-icon.purple {
+    background: #faf5ff;
+    color: #a855f7;
+}
+
+.card-icon.red {
+    background: #fef2f2;
+    color: #ef4444;
+}
+
+.card-icon.green {
+    background: #f0fdf4;
+    color: #22c55e;
+}
+
+.card-icon.orange {
+    background: #fff7ed;
+    color: #f97316;
+}
+
+.card-icon.cyan {
+    background: #ecfeff;
+    color: #06b6d4;
+}
+
+.card-icon.yellow {
+    background: #fefce8;
+    color: #eab308;
+}
+
+.card-icon.teal {
+    background: #f0fdfa;
+    color: #14b8a6;
+}
+
+.card-icon.pink {
+    background: #fdf2f8;
+    color: #ec4899;
+}
+
+.card-body h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+    color: #1e293b;
+}
+
+.card-body p {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+}
+
+.admin-dashboard-footer {
+    margin-top: 60px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-header-premium {
+        padding: 30px;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .admin-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
