@@ -62,7 +62,7 @@ export default function FeedbackPage() {
             <div className="feedback-glass-card">
                 <div className="feedback-header">
                     <h1>Your Feedback Matters ✨</h1>
-                    <p>Help us improve the platform for everyone. Your thoughts are valuable.</p>
+                    <p > Help us improve the platform for everyone. Your thoughts are valuable.</p>
                 </div>
 
                 <div className="rating-section">
