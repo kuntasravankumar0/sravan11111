@@ -1,0 +1,428 @@
+/* ─── Shared Tool Page Styles ─────────────────── */
+.tool-page {
+  min-height: 100vh;
+  padding: 140px 0 80px;
+}
+
+.tool-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.tool-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0 auto 20px;
+}
+
+.tool-header h1 { margin-bottom: 8px; }
+.tool-header p { font-size: 1.05rem; color: var(--text-tertiary); }
+
+.tool-card {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.tool-textarea {
+  width: 100%;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: vertical;
+  transition: border-color var(--transition-fast);
+}
+
+.tool-textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.tool-textarea::placeholder { color: var(--text-tertiary); }
+
+/* ─── QR Code ─────────────────────────────────── */
+.qr-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.qr-image {
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ─── Calculator ──────────────────────────────── */
+.calc-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.calc-card {
+  width: 320px;
+  padding: 24px;
+}
+
+.calc-display {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 16px;
+  text-align: right;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.calc-equation {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  min-height: 20px;
+}
+
+.calc-value {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.calc-btn {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  font-size: 1.1rem;
+  font-weight: 500;
+  background: var(--bg-glass);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+}
+
+.calc-btn:hover {
+  background: var(--bg-glass-strong);
+}
+
+.calc-btn.operator {
+  background: var(--accent-primary);
+  color: white;
+  border-color: transparent;
+}
+
+.calc-btn.operator:hover {
+  opacity: 0.9;
+}
+
+.calc-btn.clear {
+  color: #ef4444;
+}
+
+/* ─── Speaker Fix ─────────────────────────────── */
+.speaker-visual {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.speaker-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--accent-primary);
+  opacity: 0.3;
+}
+
+.speaker-core {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.freq-control {
+  margin-top: 24px;
+}
+
+.freq-control label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.freq-slider {
+  width: 100%;
+  accent-color: var(--accent-primary);
+}
+
+/* ─── Text Tools ──────────────────────────────── */
+.text-stats {
+  display: flex;
+  gap: 16px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+.text-stats span {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  padding: 4px 12px;
+  background: var(--bg-card);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+}
+
+.text-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.text-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.text-actions button:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-accent);
+}
+
+.text-actions button.copied {
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+/* ─── Typing Test ─────────────────────────────── */
+.typing-sample {
+  padding: 20px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-family: monospace;
+}
+
+.typing-sample .correct { color: #22c55e; }
+.typing-sample .incorrect { color: #ef4444; background: rgba(239, 68, 68, 0.1); border-radius: 2px; }
+.typing-sample .current { border-bottom: 2px solid var(--accent-primary); }
+
+.typing-input { font-family: monospace; }
+
+.typing-results {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+}
+
+.result-item {
+  text-align: center;
+}
+
+.result-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-accent);
+}
+
+.result-label {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Unit Converter ──────────────────────────── */
+.category-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-card);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  margin-bottom: 32px;
+}
+
+.converter-grid {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.converter-col {
+  flex: 1;
+}
+
+.converter-col label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.converter-select {
+  width: 100%;
+  padding: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.converter-select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.converter-input {
+  width: 100%;
+  padding: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.converter-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.converter-result {
+  padding: 14px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-md);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-accent);
+  min-height: 48px;
+}
+
+.swap-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  margin-bottom: 4px;
+}
+
+.swap-btn:hover {
+  background: var(--accent-primary);
+  color: white;
+  border-color: transparent;
+}
+
+/* ─── Responsive ──────────────────────────────── */
+@media (max-width: 640px) {
+  .tool-card { padding: 24px; }
+  .calc-card { width: 100%; }
+  .converter-grid { flex-direction: column; align-items: stretch; }
+  .swap-btn { align-self: center; transform: rotate(90deg); }
+  .typing-results { gap: 16px; }
+}
+
+
+/* ─── Tools Index Grid ────────────────────────── */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tool-link-card {
+  display: block;
+  padding: 32px;
+  transition: all var(--transition-base);
+  text-align: center;
+}
+
+.tool-link-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-4px);
+}
+
+.tool-link-card .feature-icon {
+  margin: 0 auto 16px;
+}
+
+.tool-link-card h4 {
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.tool-link-card p {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 768px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,158 @@
+/* Fix My Speaker Pro Styles */
+.speaker-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-md);
+  color: #ef4444;
+  font-size: 0.85rem;
+  max-width: 700px;
+  margin: 0 auto 20px;
+}
+.speaker-error button { margin-left: auto; background: none; color: #ef4444; font-size: 1.2rem; }
+
+.mode-toggle {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  max-width: 320px;
+  margin: 0 auto 24px;
+  border-radius: var(--radius-full);
+}
+.mode-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  transition: all var(--transition-fast);
+}
+.mode-btn.active { background: var(--accent-primary); color: white; }
+
+.freq-section {
+  max-width: 500px;
+  margin: 0 auto 24px;
+  padding: 20px;
+  text-align: center;
+}
+.freq-section label { font-size: 0.9rem; color: var(--text-secondary); display: block; margin-bottom: 12px; }
+.freq-section strong { color: var(--text-accent); }
+.freq-presets { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.preset-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+.preset-btn.active { border-color: var(--accent-primary); color: var(--text-accent); }
+
+/* Stages */
+.stages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto 32px;
+}
+.stage-card {
+  padding: 20px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+.stage-card.active { border-color: var(--border-accent); box-shadow: var(--shadow-glow); }
+.stage-indicator { position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 3px 3px 0 0; }
+.stage-card h4 { font-size: 0.85rem; margin-bottom: 4px; margin-top: 8px; }
+.stage-card p { font-size: 0.75rem; color: var(--text-tertiary); }
+.play-count { display: flex; align-items: center; gap: 4px; font-size: 0.7rem; color: #22c55e; margin-top: 8px; }
+
+/* Player */
+.speaker-player {
+  max-width: 500px;
+  margin: 0 auto 32px;
+  padding: 40px;
+  text-align: center;
+}
+.speaker-visual-pro {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--accent-primary); }
+.speaker-core-pro {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+.audio-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+}
+.progress-track { flex: 1; height: 4px; background: var(--bg-card); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 2px; transition: width 0.3s; }
+
+.player-controls { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.play-btn-pro, .stop-btn-pro {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+  transition: all var(--transition-base);
+}
+.play-btn-pro:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.stop-btn-pro { background: rgba(239, 68, 68, 0.9); }
+.download-btn-pro {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+.download-btn-pro:hover { border-color: var(--accent-primary); color: var(--text-accent); }
+
+/* Instructions */
+.speaker-instructions {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.speaker-instructions h4 { margin-bottom: 12px; }
+.speaker-instructions ol { padding-left: 20px; }
+.speaker-instructions li { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.5; }
+
+@media (max-width: 640px) {
+  .stages-grid { grid-template-columns: 1fr; }
+  .speaker-player { padding: 28px 20px; }
+}
