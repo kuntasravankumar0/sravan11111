@@ -53,11 +53,6 @@ const fadeUp = {
   }),
 };
 
-const cardHover = {
-  rest: { scale: 1, rotateX: 0, rotateY: 0 },
-  hover: { scale: 1.02, transition: { duration: 0.3 } },
-};
-
 export default function Projects() {
   const [hoveredId, setHoveredId] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);

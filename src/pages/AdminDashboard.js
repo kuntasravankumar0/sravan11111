@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Users, Shield, MessageSquare, Mail, Activity, LogOut,
-  CheckCircle, XCircle, Trash2, Clock, Eye
+  CheckCircle, XCircle, Trash2, Clock
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { userService, adminService, commentService, contactService, presenceService, googleService } from '../config/api';
@@ -23,14 +23,8 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
   const [stats, setStats] = useState({ users: 0, online: 0, pending: 0, comments: 0, messages: 0 });
   const [users, setUsers] = useState([]);
-  const [admins, setAdmins] = useState([]);
   const [comments, setComments] = useState([]);
   const [messages, setMessages] = useState([]);
-
-  useEffect(() => {
-    if (!isAdmin) { navigate('/admin/login'); return; }
-    fetchStats();
-  }, [isAdmin, navigate]);
 
   const fetchStats = useCallback(async () => {
     try {
@@ -45,7 +39,6 @@ export default function AdminDashboard() {
 
       const allUsers = [...(usersRes.data || []), ...(googleRes.data?.data || [])];
       setUsers(allUsers);
-      setAdmins([]);
       setComments(commentsRes.data || []);
       setMessages(messagesRes.data?.data || messagesRes.data || []);
 
@@ -60,6 +53,11 @@ export default function AdminDashboard() {
       console.error('Stats error:', err);
     }
   }, []);
+
+  useEffect(() => {
+    if (!isAdmin) { navigate('/admin/login'); return; }
+    fetchStats();
+  }, [isAdmin, navigate, fetchStats]);
 
   const handleApproveComment = async (id) => {
     await commentService.approve(id);
